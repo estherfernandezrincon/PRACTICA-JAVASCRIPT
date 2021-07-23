@@ -1,4 +1,6 @@
 import teams from "./teams.js";
+import shuffle from "./tools/extra.js";
+
 
 
 //El programa comenzará indicando con un mensaje que “comienza el torneo”.
@@ -8,28 +10,33 @@ console.log(message);
 
 for (let i in teams) {
     const team = teams[i];
-    console.log(` ${ team}`);
+    
+    console.log(`${team}`);
     
 }   
 console.log(`=========================`);
 
 //quien juega con quien
-const team1 = [];
-const team2 = [];
-const team3 = [];
-const team4 = [];
-const team5 = [];
-const team6 = [];
-const team7 = [];
-const team8 = [];
+ 
+const mixedTeam = shuffle(teams);
+
+const team1 = mixedTeam.slice(0,2)
+const team4 = mixedTeam.slice(6,8)
+const team5 = mixedTeam.slice(8,10);
+const team6 = mixedTeam.slice(10,12);
+const team7 = mixedTeam.slice(12,14);
+const team8 = mixedTeam.slice(14,);
+const team3 = mixedTeam.slice(4,6)
+const team2 = mixedTeam.slice(2,4)
 
 
-const newTeam = Math.floor(Math.random()*(15-0) +0); 
-for (let i in teams) {
-    team1.push(teams[newTeam]); 
+//equipos del team1 juegan
+//const goals =  Math.floor(Math.random() * 3); 
 
-    console.log(team1);
-}
+//function play(arr) {}
+
+
+
 
 
 
