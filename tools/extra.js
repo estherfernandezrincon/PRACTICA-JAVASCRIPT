@@ -13,12 +13,6 @@ function shuffle(arr) {
 
 export default shuffle 
 
-function createTeams( arr ) {
 
-    for (i = 0; i < arr.length; i++) {
-        const a = arr.slice[i,i+1];
-        return a;
-    }
-};
 
 

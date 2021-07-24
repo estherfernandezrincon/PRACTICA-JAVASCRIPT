@@ -9,60 +9,79 @@ const message = "¡¡Comienza el torneo!! Los equipos que se disputan la Eurocop
 console.log(message);
 
 for (let i in teams) {
-    const team = teams[i];
-    
+    const team = teams[i];    
     console.log(`${team}`);
     
 }   
-console.log(`=========================`);
+console.log(`============================================`);
+console.log(`====COMIENZO DE LA FASE DE ELIMINATORIAS====`);
+console.log(`============================================`);
+
+console.log(`**********OCTAVOS DE FINAL**********`);
 
 //quien juega con quien
- 
+
 const mixedTeam = shuffle(teams);
+const copyMixedTeam = [
+    ...mixedTeam
+]
 
-const team1 = mixedTeam.slice(0,2)
-const team4 = mixedTeam.slice(6,8)
-const team5 = mixedTeam.slice(8,10);
-const team6 = mixedTeam.slice(10,12);
-const team7 = mixedTeam.slice(12,14);
-const team8 = mixedTeam.slice(14,);
-const team3 = mixedTeam.slice(4,6)
-const team2 = mixedTeam.slice(2,4)
-
-
-//equipos del team1 juegan
-//const goals =  Math.floor(Math.random() * 3); 
-
-//function play(arr) {}
+const octavos = [];
+for (let i = 0; i < mixedTeam.length / 2 ; i++) {
+    const match = []
+    for (let j = 0; j < 2 ; j++) { 
+        match.push(copyMixedTeam.pop());
+    }
+    octavos.push(match)
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
+console.log (`${octavos[0][0]} vs ${octavos[0][1]}`)
+const A = octavos[0][0]
+const B = octavos[0][1]
 
 
 //● A continuación se deberán mostrar los resultados de los partidos en las diferentes rondas
-//TODO octavos 
+// octavos 
+//cada equio debe mostrar los goles por consola, y de ahi el ganador
+
+const goals1 =  Math.floor(Math.random() * 3); 
+console.log(goals1)
+const goals2 =  Math.floor(Math.random() * 3); 
+console.log(goals2)
+
+function octavos() {
+    this.nameTeam1 = nameTeam1;
+    this.goals1 = goals1;
+    this.nameTeam2 = nameTeam2;
+    this.goals2 = goals2;
+
+    octavos.setResult = function (nameTeam1) {
+        this.nameTeam1 = nameTeam1;
+        this.goals1 = goals1;
+    }
+
+    octavos.setResult = function (nameTeam2) {
+        this.nameTeam2 = nameTeam2;
+        this.goals2 = goals2;
+    }
+}
+
+for ( const A of octavos){
+    const results = {
+        A : goals1,
+        B : goals2
+    }
+    console.log(results)
+}
+
+
+
+
+
+
+
+
 
 
 
