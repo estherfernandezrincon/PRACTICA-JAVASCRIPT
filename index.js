@@ -35,45 +35,88 @@ for (let i = 0; i < mixedTeam.length / 2 ; i++) {
     octavos.push(match)
 }
 
+octavos.forEach(octavo => {
+    console.log (`${octavo[0]}  vs ${octavo[1]} `);
 
-console.log (`${octavos[0][0]} vs ${octavos[0][1]}`)
-const A = octavos[0][0]
-const B = octavos[0][1]
+});
+
+console.log ('ººººº RESULTADOS  OCTAVOS ººººº')
+
+function generateGoal() {
+    return Math.floor(Math.random() * 8); 
+}
+
+
+octavos.forEach(octavo => {
+    const goalsA = generateGoal();
+    const goalsB = generateGoal();
+
+    const quarterTeam = [];
+    if(goalsA > goalsB){
+        quarterTeam.push(octavo[0])
+    }else {
+        quarterTeam.push(octavo[1])
+    }
+    console.log(`${octavo[0]} ${goalsA}  vs ${octavo[1]} ${goalsB} => The winner is ${quarterTeam} `);
+
+    
+    console.log(quarterTeam);
+});
+
+console.log(`********** CUARTOS DE FINAL**********`);
+
+
+
+
+
+
+
+
+
+
+//function play(array) {
+//    const goalsA = generateGoal();
+//    const goalsB = generateGoal();
+//    return {
+//        teamA : goalsA,
+//        teamB : goalsB
+//    }
+//}
+//
+//const players = play(octavos)
+//
+//function getWinner(array) {
+//    const teamA = octavos[0];
+//    const teamB = octavos[1];
+//    octavos.sort(function (teamA, teamB) {
+//        if(teamA.goalsA > teamB.goalsB){
+//            return -1
+//        }else {
+//            return 1
+//        }
+//        
+//    })
+//    return octavos
+//}
+//
+//const winner = getWinner(players).map(octavos => Object.assign({} , octavos));
+//console.log(winner)
+
+
 
 
 //● A continuación se deberán mostrar los resultados de los partidos en las diferentes rondas
 // octavos 
 //cada equio debe mostrar los goles por consola, y de ahi el ganador
 
-const goals1 =  Math.floor(Math.random() * 3); 
-console.log(goals1)
-const goals2 =  Math.floor(Math.random() * 3); 
-console.log(goals2)
 
-function octavos() {
-    this.nameTeam1 = nameTeam1;
-    this.goals1 = goals1;
-    this.nameTeam2 = nameTeam2;
-    this.goals2 = goals2;
-
-    octavos.setResult = function (nameTeam1) {
-        this.nameTeam1 = nameTeam1;
-        this.goals1 = goals1;
-    }
-
-    octavos.setResult = function (nameTeam2) {
-        this.nameTeam2 = nameTeam2;
-        this.goals2 = goals2;
-    }
-}
-
-for ( const A of octavos){
-    const results = {
-        A : goals1,
-        B : goals2
-    }
-    console.log(results)
-}
+//for ( const newResult of octavos){
+//    const results = {
+//        A : goals1,
+//        B : goals2
+//    }
+//    console.log(results)
+//    }
 
 
 
