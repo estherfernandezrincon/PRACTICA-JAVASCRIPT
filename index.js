@@ -2,10 +2,7 @@ import teams from "./teams.js";
 import shuffle from "./tools/extra.js";
 
 
-
-//El programa comenzará indicando con un mensaje que “comienza el torneo”.
-
-const message = "¡¡Comienza el torneo!! Los equipos que se disputan la Eurocopa son:";
+const message = "¡¡COMIENZA EL TORNEO!! Los equipos que se disputan la Eurocopa son:";
 console.log(message);
 
 for (let i in teams) {
@@ -25,7 +22,8 @@ function generateGoal() {
     return Math.floor(Math.random() * 7); 
 }
 
-//quien juega con quien
+const playAgain= generateGoal();
+
 
 const mixedTeam = shuffle(teams);
 const copyMixedTeam = [
@@ -50,17 +48,29 @@ console.log(`**********RESULTADOS DE OCTAVOS DE FINAL**********`);
 
 const winner = [];
 octavos.forEach(octavo => {
-    const goalsA = generateGoal()
+    const goalsA = generateGoal();
     const goalsB = generateGoal();
     const quarterTeam = [];
-//TODO cuando haya empate tienen que volver a jugar
+    const num = (goalsA + 1);
+    const newGoal = playAgain;
+
     if(goalsA > goalsB){
         quarterTeam.push(octavo[0])
-    }else{
-    
-        quarterTeam.push(octavo[1])
-        
-    }
+    }else if
+        (goalsA < goalsB) {   
+        quarterTeam.push(octavo[1])       
+
+    }else if
+        (goalsA === goalsB) {
+            const goalsA = newGoal;
+            if(goalsA > goalsB){
+                quarterTeam.push(octavo[0])
+            }else{
+                quarterTeam.push(octavo[1])
+            }
+        }
+
+
     winner.push(quarterTeam)
     console.log(`${octavo[0]} ${goalsA}  vs ${octavo[1]} ${goalsB} => The winner is ${quarterTeam} `);  
     
@@ -77,11 +87,8 @@ for (let i = 0; i < winner.length ; i++) {
     }else{
         a.push(winner[i][0]);
     }
-  
-
 }
 q.reverse();
-
 
 const t = [
     ...a,
@@ -117,12 +124,18 @@ for(let i = 1; i < 5; i++){
     const goalsA = generateGoal();
     const goalsB = generateGoal();
     const goals = [];
+    const newGoal = playAgain;
     if(goalsA > goalsB){
         goals.push(u[0])
-    }else {
+    }else{
         goals.push(u[1])
+ 
+        
     }
-    goalsQuarter.push(goals)
+     
+   
+    
+        goalsQuarter.push(goals)
 
     console.log(`${u[0]} ${goalsA } vs ${u[1]} ${goalsB}  => The winner is ${goals}`)
 }
@@ -138,44 +151,58 @@ const goalsZ = generateGoal();
 const goalsC = generateGoal();
 const g = []
 const y = []
+const newGoal = playAgain;
 if(goalsZ > goalsC){
     g.push(semif[0])
     y.push(semif[1])
    
 }else{
+    (goalsZ < goalsC)
     g.push(semif[1]) 
     y.push(semif[0])
      
 }
+ 
 
 console.log(`${semif[0]} ${goalsZ} vs ${semif[1]} ${goalsC}  => the winner is ${g}`)
 
-const goalsA = generateGoal();
-const goalsB = generateGoal();
+const goalsT = generateGoal();
+const goalsU = generateGoal();
 const f = []
 const j = []
-if(goalsA > goalsB){
+if(goalsT > goalsU){
     f.push(goalsQuarter[0])
     j.push(goalsQuarter[1])
 
-}else{
+}else {
+    (goalsT < goalsU)
     f.push(goalsQuarter[1])
     j.push(goalsQuarter[0])
 }
-console.log(`${goalsQuarter[0]} ${goalsA} vs ${goalsQuarter[1]} ${goalsB} => the winner is ${f}`)
+ 
+
+console.log(`${goalsQuarter[0]} ${goalsT} vs ${goalsQuarter[1]} ${goalsU} => the winner is ${f}`)
 
 console.log(`********** TERCER Y CUARTO PUESTO **********`);
 
 const goalsV = generateGoal();
 const goalsE = generateGoal();
 const av = []
+const aw = []
 if(goalsV > goalsE) {
     av.push(y)
+    aw.push(j)
 }else{
+    (goalsV < goalsE)
     av.push(j)
+    aw.push(y)
 }
-console.log(`${y}  ${goalsV } vs ${j}  ${goalsE} => the winner is ${av}`);
-//console.log(`${goalsQuarter[0]} ${goalsA} vs ${goalsQuarter[1]} ${goalsB} => the winner is ${j}`)
+
+
+
+console.log(`${y}  ${goalsV } vs ${j}  ${goalsE} => the second place goes to : ${av}`);
+console.log(`The third place goes to : ${aw}`);
+
 
 
 console.log(`********** FINAL **********`);
@@ -185,14 +212,18 @@ const goalsM = generateGoal();
 const n = []
 if(goalsP > goalsM) {
     n.push(g)
-}else{
-    n.push(f)    
+}else{ 
+    (goalsP < goalsM)
+        n.push(f) 
 }
+  
+
+    
 
 console.log(`${g} ${goalsP} vs ${f} ${goalsM} => The winner is ${n}`)
 
 console.log(`============================================`);
-console.log(` ¡¡¡ ${n} champions EURO League!!! `);
+console.log(` ¡¡¡ ${n}  EURO League champion!!! `);
 console.log(`============================================`);
 
 
@@ -205,10 +236,3 @@ console.log(`============================================`);
 
 
 
-
-//cuartos de final y semifinales), indicando qué equipos se clasifican para
-//la siguiente ronda (esto se mostrará desde octavos de final hasta semifinales).
-//● Opcional: Una vez finalizadas las semifinales, se mostrará el resultado del partido de
-//tercer y cuarto puesto (que se juega entre equipos no clasificados para la final).
-//● Tras esto, se mostrará el resultado del partido de la final, anunciando posteriormente el
-//equipo ganador como campeón del mundo
