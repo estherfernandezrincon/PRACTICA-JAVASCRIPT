@@ -22,9 +22,6 @@ function generateGoal() {
     return Math.floor(Math.random() * 7); 
 }
 
-const playAgain= generateGoal();
-
-
 const mixedTeam = shuffle(teams);
 const copyMixedTeam = [
     ...mixedTeam
@@ -46,36 +43,26 @@ octavos.forEach(octavo => {
 
 console.log(`**********RESULTADOS DE OCTAVOS DE FINAL**********`);
 
+
 const winner = [];
 octavos.forEach(octavo => {
-    const goalsA = generateGoal();
-    const goalsB = generateGoal();
     const quarterTeam = [];
-    const num = (goalsA + 1);
-    const newGoal = playAgain;
-
-    if(goalsA > goalsB){
+    let goalsA = generateGoal()
+    let goalsB = generateGoal()
+    while (goalsA === goalsB){
+        goalsA = generateGoal()
+        goalsB = generateGoal()
+    }
+    if (goalsA > goalsB) {
         quarterTeam.push(octavo[0])
-    }else if
-        (goalsA < goalsB) {   
-        quarterTeam.push(octavo[1])       
+    } else {
+        quarterTeam.push(octavo[1])
+    }
+        winner.push(quarterTeam)
+        console.log(`${octavo[0]} ${goalsA}  vs ${octavo[1]} ${goalsB} => The winner is ${quarterTeam} `);   
 
-    }else if
-        (goalsA === goalsB) {
-            const goalsA = newGoal;
-            if(goalsA > goalsB){
-                quarterTeam.push(octavo[0])
-            }else{
-                quarterTeam.push(octavo[1])
-            }
-        }
-
-
-    winner.push(quarterTeam)
-    console.log(`${octavo[0]} ${goalsA}  vs ${octavo[1]} ${goalsB} => The winner is ${quarterTeam} `);  
+    })
     
-});
-
 
 console.log(`********** CUARTOS DE FINAL**********`);
 
@@ -121,21 +108,25 @@ for(let i = 1; i < 5; i++){
     w[`partido${i}`] 
     let u = w[`partido${i}`] 
 
-    const goalsA = generateGoal();
-    const goalsB = generateGoal();
+    let goalsA = generateGoal();
+    let goalsB = generateGoal();
     const goals = [];
-    const newGoal = playAgain;
+
+    while (goalsA === goalsB){
+        goalsA = generateGoal()
+        goalsB = generateGoal()
+    }
     if(goalsA > goalsB){
         goals.push(u[0])
     }else{
         goals.push(u[1])
  
-        
+    
     }
      
    
     
-        goalsQuarter.push(goals)
+    goalsQuarter.push(goals)
 
     console.log(`${u[0]} ${goalsA } vs ${u[1]} ${goalsB}  => The winner is ${goals}`)
 }
@@ -147,11 +138,15 @@ for(let i = 0; i < goalsQuarter.length ; i++){
     let h = goalsQuarter.splice(i,1)
     semif.push(h)           
 }
-const goalsZ = generateGoal();
-const goalsC = generateGoal();
+let goalsZ = generateGoal();
+let goalsC = generateGoal();
 const g = []
 const y = []
-const newGoal = playAgain;
+
+while (goalsZ === goalsC){
+    goalsZ = generateGoal()
+    goalsC = generateGoal()
+}
 if(goalsZ > goalsC){
     g.push(semif[0])
     y.push(semif[1])
@@ -166,10 +161,15 @@ if(goalsZ > goalsC){
 
 console.log(`${semif[0]} ${goalsZ} vs ${semif[1]} ${goalsC}  => the winner is ${g}`)
 
-const goalsT = generateGoal();
-const goalsU = generateGoal();
+let goalsT = generateGoal();
+let goalsU = generateGoal();
 const f = []
 const j = []
+
+while (goalsT === goalsU){
+    goalsT = generateGoal()
+    goalsU = generateGoal()
+}
 if(goalsT > goalsU){
     f.push(goalsQuarter[0])
     j.push(goalsQuarter[1])
@@ -185,10 +185,16 @@ console.log(`${goalsQuarter[0]} ${goalsT} vs ${goalsQuarter[1]} ${goalsU} => the
 
 console.log(`********** TERCER Y CUARTO PUESTO **********`);
 
-const goalsV = generateGoal();
-const goalsE = generateGoal();
+let goalsV = generateGoal();
+let goalsE = generateGoal();
 const av = []
 const aw = []
+
+while (goalsV === goalsE){
+    goalsV = generateGoal()
+    goalsE = generateGoal()
+}
+
 if(goalsV > goalsE) {
     av.push(y)
     aw.push(j)
@@ -207,9 +213,14 @@ console.log(`The third place goes to : ${aw}`);
 
 console.log(`********** FINAL **********`);
 
-const goalsP = generateGoal();
-const goalsM = generateGoal();
+let goalsP = generateGoal();
+let goalsM = generateGoal();
 const n = []
+
+while (goalsP === goalsM){
+    goalsP = generateGoal()
+    goalsM = generateGoal()
+}
 if(goalsP > goalsM) {
     n.push(g)
 }else{ 
